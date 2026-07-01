@@ -1,0 +1,974 @@
+{
+  "source_csv": "data/marketing_performance.csv",
+  "duplicates_removed": {
+    "count": 1,
+    "rows": [
+      {
+        "date": "2026-05-15",
+        "channel": "네이버광고",
+        "week": "W7"
+      }
+    ]
+  },
+  "revenue_outliers_removed": {
+    "count": 1,
+    "rows": [
+      {
+        "date": "2026-04-26",
+        "channel": "이메일",
+        "conversions": 164,
+        "revenue": 32249907.0,
+        "aov": 196645.7743902439,
+        "threshold_aov": 24119.7
+      }
+    ]
+  },
+  "missing_value_flags": [
+    {
+      "date": "2026-04-11",
+      "channel": "카카오광고",
+      "week": "W2",
+      "missing_column": "impressions"
+    },
+    {
+      "date": "2026-04-20",
+      "channel": "메타광고",
+      "week": "W3",
+      "missing_column": "clicks"
+    },
+    {
+      "date": "2026-05-07",
+      "channel": "네이버광고",
+      "week": "W6",
+      "missing_column": "revenue"
+    }
+  ],
+  "missing_date_flags": [
+    {
+      "channel": "이메일",
+      "week": "W4",
+      "expected_days": 7,
+      "actual_days": 6,
+      "missing_dates": [
+        "2026-04-26"
+      ]
+    },
+    {
+      "channel": "네이버광고",
+      "week": "W7",
+      "expected_days": 7,
+      "actual_days": 6,
+      "missing_dates": [
+        "2026-05-16"
+      ]
+    }
+  ],
+  "calendar_wide_gaps": [],
+  "weekly_channel_metrics": [
+    {
+      "channel": "네이버광고",
+      "week": "W1",
+      "actual_days": 7,
+      "spend": 1319132,
+      "revenue": 9344994.0,
+      "conversions": 516,
+      "impressions": 311167.0,
+      "clicks": 19293.0,
+      "roi_pct": 708.4
+    },
+    {
+      "channel": "네이버광고",
+      "week": "W2",
+      "actual_days": 7,
+      "spend": 1423205,
+      "revenue": 8473222.0,
+      "conversions": 468,
+      "impressions": 303580.0,
+      "clicks": 18620.0,
+      "roi_pct": 595.4
+    },
+    {
+      "channel": "네이버광고",
+      "week": "W3",
+      "actual_days": 7,
+      "spend": 1376128,
+      "revenue": 9319814.0,
+      "conversions": 501,
+      "impressions": 327547.0,
+      "clicks": 19842.0,
+      "roi_pct": 677.2
+    },
+    {
+      "channel": "네이버광고",
+      "week": "W4",
+      "actual_days": 7,
+      "spend": 1379613,
+      "revenue": 9679505.0,
+      "conversions": 520,
+      "impressions": 298802.0,
+      "clicks": 19136.0,
+      "roi_pct": 701.6
+    },
+    {
+      "channel": "네이버광고",
+      "week": "W5",
+      "actual_days": 7,
+      "spend": 1465726,
+      "revenue": 9751603.0,
+      "conversions": 529,
+      "impressions": 321884.0,
+      "clicks": 20059.0,
+      "roi_pct": 665.3
+    },
+    {
+      "channel": "네이버광고",
+      "week": "W6",
+      "actual_days": 7,
+      "spend": 1477123,
+      "revenue": 8088565.0,
+      "conversions": 505,
+      "impressions": 321282.0,
+      "clicks": 19797.0,
+      "roi_pct": 547.6
+    },
+    {
+      "channel": "네이버광고",
+      "week": "W7",
+      "actual_days": 6,
+      "spend": 1366511,
+      "revenue": 9474180.0,
+      "conversions": 490,
+      "impressions": 288279.0,
+      "clicks": 18408.0,
+      "roi_pct": 693.3
+    },
+    {
+      "channel": "네이버광고",
+      "week": "W8",
+      "actual_days": 7,
+      "spend": 1590613,
+      "revenue": 10933852.0,
+      "conversions": 577,
+      "impressions": 357922.0,
+      "clicks": 22013.0,
+      "roi_pct": 687.4
+    },
+    {
+      "channel": "메타광고",
+      "week": "W1",
+      "actual_days": 7,
+      "spend": 1155815,
+      "revenue": 4021189.0,
+      "conversions": 243,
+      "impressions": 680569.0,
+      "clicks": 12753.0,
+      "roi_pct": 347.9
+    },
+    {
+      "channel": "메타광고",
+      "week": "W2",
+      "actual_days": 7,
+      "spend": 1179767,
+      "revenue": 3518558.0,
+      "conversions": 216,
+      "impressions": 698369.0,
+      "clicks": 11858.0,
+      "roi_pct": 298.2
+    },
+    {
+      "channel": "메타광고",
+      "week": "W3",
+      "actual_days": 7,
+      "spend": 1157106,
+      "revenue": 4009286.0,
+      "conversions": 232,
+      "impressions": 683681.0,
+      "clicks": 10397.0,
+      "roi_pct": 346.5
+    },
+    {
+      "channel": "메타광고",
+      "week": "W4",
+      "actual_days": 7,
+      "spend": 1248328,
+      "revenue": 3822559.0,
+      "conversions": 231,
+      "impressions": 736358.0,
+      "clicks": 12633.0,
+      "roi_pct": 306.2
+    },
+    {
+      "channel": "메타광고",
+      "week": "W5",
+      "actual_days": 7,
+      "spend": 4442609,
+      "revenue": 5488374.0,
+      "conversions": 333,
+      "impressions": 1019030.0,
+      "clicks": 17826.0,
+      "roi_pct": 123.5
+    },
+    {
+      "channel": "메타광고",
+      "week": "W6",
+      "actual_days": 7,
+      "spend": 1255256,
+      "revenue": 4336716.0,
+      "conversions": 256,
+      "impressions": 757952.0,
+      "clicks": 13328.0,
+      "roi_pct": 345.5
+    },
+    {
+      "channel": "메타광고",
+      "week": "W7",
+      "actual_days": 7,
+      "spend": 1303475,
+      "revenue": 4174562.0,
+      "conversions": 244,
+      "impressions": 758950.0,
+      "clicks": 13425.0,
+      "roi_pct": 320.3
+    },
+    {
+      "channel": "메타광고",
+      "week": "W8",
+      "actual_days": 7,
+      "spend": 1433178,
+      "revenue": 4716882.0,
+      "conversions": 282,
+      "impressions": 819691.0,
+      "clicks": 14985.0,
+      "roi_pct": 329.1
+    },
+    {
+      "channel": "오가닉",
+      "week": "W1",
+      "actual_days": 7,
+      "spend": 0,
+      "revenue": 12644368.0,
+      "conversions": 652,
+      "impressions": 234719.0,
+      "clicks": 20956.0,
+      "roi_pct": NaN
+    },
+    {
+      "channel": "오가닉",
+      "week": "W2",
+      "actual_days": 7,
+      "spend": 0,
+      "revenue": 12833716.0,
+      "conversions": 669,
+      "impressions": 246955.0,
+      "clicks": 21155.0,
+      "roi_pct": NaN
+    },
+    {
+      "channel": "오가닉",
+      "week": "W3",
+      "actual_days": 7,
+      "spend": 0,
+      "revenue": 11994056.0,
+      "conversions": 616,
+      "impressions": 233434.0,
+      "clicks": 20412.0,
+      "roi_pct": NaN
+    },
+    {
+      "channel": "오가닉",
+      "week": "W4",
+      "actual_days": 7,
+      "spend": 0,
+      "revenue": 13150134.0,
+      "conversions": 664,
+      "impressions": 238670.0,
+      "clicks": 20747.0,
+      "roi_pct": NaN
+    },
+    {
+      "channel": "오가닉",
+      "week": "W5",
+      "actual_days": 7,
+      "spend": 0,
+      "revenue": 12940973.0,
+      "conversions": 662,
+      "impressions": 246785.0,
+      "clicks": 21574.0,
+      "roi_pct": NaN
+    },
+    {
+      "channel": "오가닉",
+      "week": "W6",
+      "actual_days": 7,
+      "spend": 0,
+      "revenue": 12491434.0,
+      "conversions": 636,
+      "impressions": 249986.0,
+      "clicks": 20969.0,
+      "roi_pct": NaN
+    },
+    {
+      "channel": "오가닉",
+      "week": "W7",
+      "actual_days": 7,
+      "spend": 0,
+      "revenue": 14175309.0,
+      "conversions": 709,
+      "impressions": 268759.0,
+      "clicks": 22953.0,
+      "roi_pct": NaN
+    },
+    {
+      "channel": "오가닉",
+      "week": "W8",
+      "actual_days": 7,
+      "spend": 0,
+      "revenue": 14008824.0,
+      "conversions": 723,
+      "impressions": 269677.0,
+      "clicks": 22860.0,
+      "roi_pct": NaN
+    },
+    {
+      "channel": "이메일",
+      "week": "W1",
+      "actual_days": 7,
+      "spend": 2319714,
+      "revenue": 24017916.0,
+      "conversions": 1144,
+      "impressions": 95023.0,
+      "clicks": 18911.0,
+      "roi_pct": 1035.4
+    },
+    {
+      "channel": "이메일",
+      "week": "W2",
+      "actual_days": 7,
+      "spend": 2335774,
+      "revenue": 23279144.0,
+      "conversions": 1138,
+      "impressions": 98143.0,
+      "clicks": 19041.0,
+      "roi_pct": 996.6
+    },
+    {
+      "channel": "이메일",
+      "week": "W3",
+      "actual_days": 7,
+      "spend": 2240605,
+      "revenue": 23884590.0,
+      "conversions": 1129,
+      "impressions": 95653.0,
+      "clicks": 19233.0,
+      "roi_pct": 1066.0
+    },
+    {
+      "channel": "이메일",
+      "week": "W4",
+      "actual_days": 6,
+      "spend": 1943973,
+      "revenue": 20182223.0,
+      "conversions": 982,
+      "impressions": 83006.0,
+      "clicks": 16647.0,
+      "roi_pct": 1038.2
+    },
+    {
+      "channel": "이메일",
+      "week": "W5",
+      "actual_days": 7,
+      "spend": 2384574,
+      "revenue": 26381472.0,
+      "conversions": 1287,
+      "impressions": 106910.0,
+      "clicks": 21944.0,
+      "roi_pct": 1106.3
+    },
+    {
+      "channel": "이메일",
+      "week": "W6",
+      "actual_days": 7,
+      "spend": 3283546,
+      "revenue": 34622421.0,
+      "conversions": 1682,
+      "impressions": 137841.0,
+      "clicks": 28571.0,
+      "roi_pct": 1054.4
+    },
+    {
+      "channel": "이메일",
+      "week": "W7",
+      "actual_days": 7,
+      "spend": 2491469,
+      "revenue": 25387694.0,
+      "conversions": 1231,
+      "impressions": 107150.0,
+      "clicks": 21171.0,
+      "roi_pct": 1019.0
+    },
+    {
+      "channel": "이메일",
+      "week": "W8",
+      "actual_days": 7,
+      "spend": 2534264,
+      "revenue": 25827386.0,
+      "conversions": 1317,
+      "impressions": 109647.0,
+      "clicks": 22208.0,
+      "roi_pct": 1019.1
+    },
+    {
+      "channel": "카카오광고",
+      "week": "W1",
+      "actual_days": 7,
+      "spend": 827760,
+      "revenue": 2793083.0,
+      "conversions": 162,
+      "impressions": 416406.0,
+      "clicks": 8430.0,
+      "roi_pct": 337.4
+    },
+    {
+      "channel": "카카오광고",
+      "week": "W2",
+      "actual_days": 7,
+      "spend": 877062,
+      "revenue": 3095220.0,
+      "conversions": 180,
+      "impressions": 367456.0,
+      "clicks": 8919.0,
+      "roi_pct": 352.9
+    },
+    {
+      "channel": "카카오광고",
+      "week": "W3",
+      "actual_days": 7,
+      "spend": 888279,
+      "revenue": 3011987.0,
+      "conversions": 178,
+      "impressions": 436688.0,
+      "clicks": 9111.0,
+      "roi_pct": 339.1
+    },
+    {
+      "channel": "카카오광고",
+      "week": "W4",
+      "actual_days": 7,
+      "spend": 522005,
+      "revenue": 1859327.0,
+      "conversions": 109,
+      "impressions": 260692.0,
+      "clicks": 5490.0,
+      "roi_pct": 356.2
+    },
+    {
+      "channel": "카카오광고",
+      "week": "W5",
+      "actual_days": 7,
+      "spend": 793201,
+      "revenue": 2617637.0,
+      "conversions": 156,
+      "impressions": 393208.0,
+      "clicks": 8088.0,
+      "roi_pct": 330.0
+    },
+    {
+      "channel": "카카오광고",
+      "week": "W6",
+      "actual_days": 7,
+      "spend": 879800,
+      "revenue": 2776308.0,
+      "conversions": 158,
+      "impressions": 397630.0,
+      "clicks": 8141.0,
+      "roi_pct": 315.6
+    },
+    {
+      "channel": "카카오광고",
+      "week": "W7",
+      "actual_days": 7,
+      "spend": 875831,
+      "revenue": 3265116.0,
+      "conversions": 185,
+      "impressions": 427822.0,
+      "clicks": 9433.0,
+      "roi_pct": 372.8
+    },
+    {
+      "channel": "카카오광고",
+      "week": "W8",
+      "actual_days": 7,
+      "spend": 912377,
+      "revenue": 3158860.0,
+      "conversions": 182,
+      "impressions": 432765.0,
+      "clicks": 8955.0,
+      "roi_pct": 346.2
+    }
+  ],
+  "week_over_week_changes": [
+    {
+      "channel": "네이버광고",
+      "week": "W2",
+      "prev_week": "W1",
+      "spend_change_pct": 7.9,
+      "revenue_change_pct": -9.3,
+      "conversions_change_pct": -9.3,
+      "roi_pct_change_pct": -16.0,
+      "caveat": false
+    },
+    {
+      "channel": "네이버광고",
+      "week": "W3",
+      "prev_week": "W2",
+      "spend_change_pct": -3.3,
+      "revenue_change_pct": 10.0,
+      "conversions_change_pct": 7.1,
+      "roi_pct_change_pct": 13.7,
+      "caveat": false
+    },
+    {
+      "channel": "네이버광고",
+      "week": "W4",
+      "prev_week": "W3",
+      "spend_change_pct": 0.3,
+      "revenue_change_pct": 3.9,
+      "conversions_change_pct": 3.8,
+      "roi_pct_change_pct": 3.6,
+      "caveat": false
+    },
+    {
+      "channel": "네이버광고",
+      "week": "W5",
+      "prev_week": "W4",
+      "spend_change_pct": 6.2,
+      "revenue_change_pct": 0.7,
+      "conversions_change_pct": 1.7,
+      "roi_pct_change_pct": -5.2,
+      "caveat": false
+    },
+    {
+      "channel": "네이버광고",
+      "week": "W6",
+      "prev_week": "W5",
+      "spend_change_pct": 0.8,
+      "revenue_change_pct": -17.1,
+      "conversions_change_pct": -4.5,
+      "roi_pct_change_pct": -17.7,
+      "caveat": false
+    },
+    {
+      "channel": "네이버광고",
+      "week": "W7",
+      "prev_week": "W6",
+      "spend_change_pct": -7.5,
+      "revenue_change_pct": 17.1,
+      "conversions_change_pct": -3.0,
+      "roi_pct_change_pct": 26.6,
+      "caveat": false
+    },
+    {
+      "channel": "네이버광고",
+      "week": "W8",
+      "prev_week": "W7",
+      "spend_change_pct": 16.4,
+      "revenue_change_pct": 15.4,
+      "conversions_change_pct": 17.8,
+      "roi_pct_change_pct": -0.9,
+      "caveat": false
+    },
+    {
+      "channel": "메타광고",
+      "week": "W2",
+      "prev_week": "W1",
+      "spend_change_pct": 2.1,
+      "revenue_change_pct": -12.5,
+      "conversions_change_pct": -11.1,
+      "roi_pct_change_pct": -14.3,
+      "caveat": false
+    },
+    {
+      "channel": "메타광고",
+      "week": "W3",
+      "prev_week": "W2",
+      "spend_change_pct": -1.9,
+      "revenue_change_pct": 13.9,
+      "conversions_change_pct": 7.4,
+      "roi_pct_change_pct": 16.2,
+      "caveat": false
+    },
+    {
+      "channel": "메타광고",
+      "week": "W4",
+      "prev_week": "W3",
+      "spend_change_pct": 7.9,
+      "revenue_change_pct": -4.7,
+      "conversions_change_pct": -0.4,
+      "roi_pct_change_pct": -11.6,
+      "caveat": false
+    },
+    {
+      "channel": "메타광고",
+      "week": "W5",
+      "prev_week": "W4",
+      "spend_change_pct": 255.9,
+      "revenue_change_pct": 43.6,
+      "conversions_change_pct": 44.2,
+      "roi_pct_change_pct": -59.7,
+      "caveat": false
+    },
+    {
+      "channel": "메타광고",
+      "week": "W6",
+      "prev_week": "W5",
+      "spend_change_pct": -71.7,
+      "revenue_change_pct": -21.0,
+      "conversions_change_pct": -23.1,
+      "roi_pct_change_pct": 179.8,
+      "caveat": false
+    },
+    {
+      "channel": "메타광고",
+      "week": "W7",
+      "prev_week": "W6",
+      "spend_change_pct": 3.8,
+      "revenue_change_pct": -3.7,
+      "conversions_change_pct": -4.7,
+      "roi_pct_change_pct": -7.3,
+      "caveat": false
+    },
+    {
+      "channel": "메타광고",
+      "week": "W8",
+      "prev_week": "W7",
+      "spend_change_pct": 10.0,
+      "revenue_change_pct": 13.0,
+      "conversions_change_pct": 15.6,
+      "roi_pct_change_pct": 2.7,
+      "caveat": false
+    },
+    {
+      "channel": "오가닉",
+      "week": "W2",
+      "prev_week": "W1",
+      "spend_change_pct": null,
+      "revenue_change_pct": 1.5,
+      "conversions_change_pct": 2.6,
+      "roi_pct_change_pct": null,
+      "caveat": false
+    },
+    {
+      "channel": "오가닉",
+      "week": "W3",
+      "prev_week": "W2",
+      "spend_change_pct": null,
+      "revenue_change_pct": -6.5,
+      "conversions_change_pct": -7.9,
+      "roi_pct_change_pct": null,
+      "caveat": false
+    },
+    {
+      "channel": "오가닉",
+      "week": "W4",
+      "prev_week": "W3",
+      "spend_change_pct": null,
+      "revenue_change_pct": 9.6,
+      "conversions_change_pct": 7.8,
+      "roi_pct_change_pct": null,
+      "caveat": false
+    },
+    {
+      "channel": "오가닉",
+      "week": "W5",
+      "prev_week": "W4",
+      "spend_change_pct": null,
+      "revenue_change_pct": -1.6,
+      "conversions_change_pct": -0.3,
+      "roi_pct_change_pct": null,
+      "caveat": false
+    },
+    {
+      "channel": "오가닉",
+      "week": "W6",
+      "prev_week": "W5",
+      "spend_change_pct": null,
+      "revenue_change_pct": -3.5,
+      "conversions_change_pct": -3.9,
+      "roi_pct_change_pct": null,
+      "caveat": false
+    },
+    {
+      "channel": "오가닉",
+      "week": "W7",
+      "prev_week": "W6",
+      "spend_change_pct": null,
+      "revenue_change_pct": 13.5,
+      "conversions_change_pct": 11.5,
+      "roi_pct_change_pct": null,
+      "caveat": false
+    },
+    {
+      "channel": "오가닉",
+      "week": "W8",
+      "prev_week": "W7",
+      "spend_change_pct": null,
+      "revenue_change_pct": -1.2,
+      "conversions_change_pct": 2.0,
+      "roi_pct_change_pct": null,
+      "caveat": false
+    },
+    {
+      "channel": "이메일",
+      "week": "W2",
+      "prev_week": "W1",
+      "spend_change_pct": 0.7,
+      "revenue_change_pct": -3.1,
+      "conversions_change_pct": -0.5,
+      "roi_pct_change_pct": -3.7,
+      "caveat": false
+    },
+    {
+      "channel": "이메일",
+      "week": "W3",
+      "prev_week": "W2",
+      "spend_change_pct": -4.1,
+      "revenue_change_pct": 2.6,
+      "conversions_change_pct": -0.8,
+      "roi_pct_change_pct": 7.0,
+      "caveat": false
+    },
+    {
+      "channel": "이메일",
+      "week": "W4",
+      "prev_week": "W3",
+      "spend_change_pct": -13.2,
+      "revenue_change_pct": -15.5,
+      "conversions_change_pct": -13.0,
+      "roi_pct_change_pct": -2.6,
+      "caveat": false
+    },
+    {
+      "channel": "이메일",
+      "week": "W5",
+      "prev_week": "W4",
+      "spend_change_pct": 22.7,
+      "revenue_change_pct": 30.7,
+      "conversions_change_pct": 31.1,
+      "roi_pct_change_pct": 6.6,
+      "caveat": false
+    },
+    {
+      "channel": "이메일",
+      "week": "W6",
+      "prev_week": "W5",
+      "spend_change_pct": 37.7,
+      "revenue_change_pct": 31.2,
+      "conversions_change_pct": 30.7,
+      "roi_pct_change_pct": -4.7,
+      "caveat": false
+    },
+    {
+      "channel": "이메일",
+      "week": "W7",
+      "prev_week": "W6",
+      "spend_change_pct": -24.1,
+      "revenue_change_pct": -26.7,
+      "conversions_change_pct": -26.8,
+      "roi_pct_change_pct": -3.4,
+      "caveat": false
+    },
+    {
+      "channel": "이메일",
+      "week": "W8",
+      "prev_week": "W7",
+      "spend_change_pct": 1.7,
+      "revenue_change_pct": 1.7,
+      "conversions_change_pct": 7.0,
+      "roi_pct_change_pct": 0.0,
+      "caveat": false
+    },
+    {
+      "channel": "카카오광고",
+      "week": "W2",
+      "prev_week": "W1",
+      "spend_change_pct": 6.0,
+      "revenue_change_pct": 10.8,
+      "conversions_change_pct": 11.1,
+      "roi_pct_change_pct": 4.6,
+      "caveat": false
+    },
+    {
+      "channel": "카카오광고",
+      "week": "W3",
+      "prev_week": "W2",
+      "spend_change_pct": 1.3,
+      "revenue_change_pct": -2.7,
+      "conversions_change_pct": -1.1,
+      "roi_pct_change_pct": -3.9,
+      "caveat": false
+    },
+    {
+      "channel": "카카오광고",
+      "week": "W4",
+      "prev_week": "W3",
+      "spend_change_pct": -41.2,
+      "revenue_change_pct": -38.3,
+      "conversions_change_pct": -38.8,
+      "roi_pct_change_pct": 5.0,
+      "caveat": false
+    },
+    {
+      "channel": "카카오광고",
+      "week": "W5",
+      "prev_week": "W4",
+      "spend_change_pct": 52.0,
+      "revenue_change_pct": 40.8,
+      "conversions_change_pct": 43.1,
+      "roi_pct_change_pct": -7.4,
+      "caveat": false
+    },
+    {
+      "channel": "카카오광고",
+      "week": "W6",
+      "prev_week": "W5",
+      "spend_change_pct": 10.9,
+      "revenue_change_pct": 6.1,
+      "conversions_change_pct": 1.3,
+      "roi_pct_change_pct": -4.4,
+      "caveat": false
+    },
+    {
+      "channel": "카카오광고",
+      "week": "W7",
+      "prev_week": "W6",
+      "spend_change_pct": -0.5,
+      "revenue_change_pct": 17.6,
+      "conversions_change_pct": 17.1,
+      "roi_pct_change_pct": 18.1,
+      "caveat": false
+    },
+    {
+      "channel": "카카오광고",
+      "week": "W8",
+      "prev_week": "W7",
+      "spend_change_pct": 4.2,
+      "revenue_change_pct": -3.3,
+      "conversions_change_pct": -1.6,
+      "roi_pct_change_pct": -7.1,
+      "caveat": false
+    }
+  ],
+  "channel_totals_ranked": [
+    {
+      "channel": "이메일",
+      "spend": 19533919,
+      "revenue": 203582846.0,
+      "conversions": 9910,
+      "impressions": 833373.0,
+      "clicks": 167726.0,
+      "roi_pct": 1042.2,
+      "roas": 10.42,
+      "ctr_pct": 20.13,
+      "cvr_pct": 5.91
+    },
+    {
+      "channel": "네이버광고",
+      "spend": 11398051,
+      "revenue": 75065735.0,
+      "conversions": 4106,
+      "impressions": 2530463.0,
+      "clicks": 157168.0,
+      "roi_pct": 658.6,
+      "roas": 6.59,
+      "ctr_pct": 6.21,
+      "cvr_pct": 2.61
+    },
+    {
+      "channel": "카카오광고",
+      "spend": 6576315,
+      "revenue": 22577538.0,
+      "conversions": 1310,
+      "impressions": 3132667.0,
+      "clicks": 66567.0,
+      "roi_pct": 343.3,
+      "roas": 3.43,
+      "ctr_pct": 2.12,
+      "cvr_pct": 1.97
+    },
+    {
+      "channel": "메타광고",
+      "spend": 13175534,
+      "revenue": 34088126.0,
+      "conversions": 2037,
+      "impressions": 6154600.0,
+      "clicks": 107205.0,
+      "roi_pct": 258.7,
+      "roas": 2.59,
+      "ctr_pct": 1.74,
+      "cvr_pct": 1.9
+    },
+    {
+      "channel": "오가닉",
+      "spend": 0,
+      "revenue": 104238814.0,
+      "conversions": 5331,
+      "impressions": 1988985.0,
+      "clicks": 171626.0,
+      "roi_pct": NaN,
+      "roas": NaN,
+      "ctr_pct": 8.63,
+      "cvr_pct": 3.11
+    }
+  ],
+  "overall_totals": {
+    "total_spend": 50683819,
+    "total_revenue": 439553059,
+    "total_conversions": 22694,
+    "overall_roi_pct": 867.2
+  },
+  "issue_candidates_wow": [
+    {
+      "candidate_type": "급증",
+      "channel": "메타광고",
+      "week": "W5",
+      "prev_week": "W4",
+      "metric": "광고비",
+      "change_pct": 255.9,
+      "roi_change_pct": -59.7,
+      "caveat": false,
+      "impact_score": 255.9
+    },
+    {
+      "candidate_type": "급락",
+      "channel": "메타광고",
+      "week": "W6",
+      "prev_week": "W5",
+      "metric": "광고비",
+      "change_pct": -71.7,
+      "roi_change_pct": 179.8,
+      "caveat": false,
+      "impact_score": 71.7
+    },
+    {
+      "candidate_type": "급증",
+      "channel": "카카오광고",
+      "week": "W5",
+      "prev_week": "W4",
+      "metric": "광고비",
+      "change_pct": 52.0,
+      "roi_change_pct": -7.4,
+      "caveat": false,
+      "impact_score": 52.0
+    }
+  ],
+  "issue_candidates_zero_spend": [
+    {
+      "candidate_type": "무비용고성과",
+      "channel": "오가닉",
+      "revenue": 104238814.0,
+      "conversions": 5331,
+      "revenue_rank_overall": 2,
+      "conversions_rank_overall": 2
+    }
+  ]
+}

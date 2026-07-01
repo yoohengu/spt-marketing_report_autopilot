@@ -1,0 +1,52 @@
+{
+  "source_metrics": "output/calculated_metrics.json",
+  "priority_formula": "우선순위 점수 = (ROI 개선폭 또는 대체 효율지표) × (재배분 금액 규모, 백만원) ÷ (실행 난이도 1~3)",
+  "proposal_1": {
+    "name": "메타광고 예산 20% 축소 → 이메일·네이버광고 재배분",
+    "target_channel": "메타광고",
+    "target_channel_roi_pct": 258.7,
+    "cut_amount": 2635107,
+    "allocations": [
+      {
+        "channel": "이메일",
+        "amount": 1614216,
+        "share_pct": 61.3
+      },
+      {
+        "channel": "네이버광고",
+        "amount": 1020891,
+        "share_pct": 38.7
+      }
+    ],
+    "target_revenue_loss_est": 6824927,
+    "destination_revenue_gain_est": 23547802,
+    "net_revenue_change_est": 16722875,
+    "weighted_target_roi_pct": 893.6,
+    "roi_improvement_pct_pt": 634.9,
+    "priority_scale": 2.64,
+    "difficulty": 1,
+    "priority_score": 1673.0
+  },
+  "proposal_2": {
+    "name": "카카오광고 예산 15% → 오가닉 콘텐츠/SEO 신규 투자",
+    "source_channel": "카카오광고",
+    "destination_channel": "오가닉",
+    "cut_amount": 986447,
+    "revenue_loss_breakeven": 3383513,
+    "destination_avg_wow_growth_pct_baseline": 1.7,
+    "efficiency_gap_cvr_pct_pt": 1.14,
+    "priority_scale": 0.99,
+    "difficulty": 3,
+    "priority_score": 0.37
+  },
+  "ranking": [
+    {
+      "name": "메타광고 예산 20% 축소 → 이메일·네이버광고 재배분",
+      "priority_score": 1673.0
+    },
+    {
+      "name": "카카오광고 예산 15% → 오가닉 콘텐츠/SEO 신규 투자",
+      "priority_score": 0.37
+    }
+  ]
+}

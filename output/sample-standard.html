@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마케팅 성과 인사이트 리포트 — Standard</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif; background: #f4f5f7; color: #1a1a2e; line-height: 1.6; }
+.container { max-width: 1080px; margin: 0 auto; padding: 40px 24px; }
+
+.header { background: #fff; border-radius: 12px; padding: 32px 36px; margin-bottom: 24px; border-left: 5px solid #f4a261; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+.level-badge { display: inline-block; background: #e76f51; color: white; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
+.header h1 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+.header-meta { font-size: 13px; color: #6c757d; display: flex; flex-wrap: wrap; gap: 16px; }
+.breadcrumb { font-size: 12px; color: #aaa; margin-bottom: 10px; }
+
+.section { background: #fff; border-radius: 12px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+.section-title { font-size: 15px; font-weight: 700; padding-bottom: 14px; margin-bottom: 20px; border-bottom: 1px solid #eee; }
+
+.pipeline { display: flex; align-items: center; gap: 0; flex-wrap: wrap; margin-bottom: 20px; }
+.pipe-step { background: #f0f4ff; border: 2px solid #4361ee; border-radius: 8px; padding: 12px 16px; text-align: center; min-width: 120px; }
+.pipe-step .cmd { font-size: 13px; font-weight: 800; color: #4361ee; font-family: monospace; }
+.pipe-step .desc { font-size: 11px; color: #555; margin-top: 4px; }
+.pipe-arrow { font-size: 20px; color: #adb5bd; padding: 0 8px; }
+.pipe-step.input { background: #fff8e1; border-color: #f4a261; }
+.pipe-step.input .cmd { color: #e76f51; }
+.pipe-step.output { background: #e8f5e9; border-color: #2d6a4f; }
+.pipe-step.output .cmd { color: #2d6a4f; }
+
+.usage-box { background: #1e1e2e; border-radius: 8px; padding: 16px 20px; font-family: monospace; font-size: 13px; color: #a6e3a1; margin-bottom: 16px; line-height: 1.8; }
+.usage-box .comment { color: #6c7086; }
+.usage-box .cmd { color: #89b4fa; }
+
+.design-note { background: #f8f9fa; border-left: 3px solid #f4a261; border-radius: 0 8px 8px 0; padding: 14px 18px; font-size: 13px; color: #444; }
+.design-note strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .5px; color: #888; margin-bottom: 4px; }
+
+.weekly { background: #fff; border: 1.5px solid #e9ecef; border-radius: 12px; overflow: hidden; }
+.weekly-header { background: #1a1a2e; color: white; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.weekly-header h2 { font-size: 15px; font-weight: 700; }
+.weekly-header .period { font-size: 12px; color: #aaa; }
+.weekly-body { padding: 24px; }
+
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+.kpi { border-radius: 8px; padding: 14px; text-align: center; }
+.kpi-n { font-size: 24px; font-weight: 800; }
+.kpi-l { font-size: 12px; margin-top: 2px; color: #666; }
+.kpi-ch { font-size: 11px; margin-top: 4px; font-weight: 600; }
+.up { color: #2d6a4f; }
+.down { color: #e63946; }
+.kpi-blue { background: #f0f3ff; }
+.kpi-green { background: #f0faf5; }
+.kpi-purple { background: #f4f0ff; }
+.kpi-gray { background: #f8f9fa; }
+
+.subsection { margin-bottom: 20px; }
+.subsection h3 { font-size: 13px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+.subsection h3 .tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 10px; }
+.tag-exec { background: #ffe0e3; color: #c9323e; }
+.tag-mkt { background: #dde3ff; color: #3452cc; }
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead th { background: #f8f9fa; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: #6c757d; padding: 8px 12px; text-align: left; border-bottom: 2px solid #e9ecef; }
+tbody td { padding: 8px 12px; border-bottom: 1px solid #f0f2f5; vertical-align: middle; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+.urg-high { background: #ffe0e3; color: #c9323e; }
+.urg-mid { background: #fff3cd; color: #856404; }
+
+.pattern-list { display: flex; flex-direction: column; gap: 8px; }
+.pattern-item { background: #f8f9fa; border-radius: 6px; padding: 12px 16px; font-size: 13px; }
+.pattern-item strong { color: #1a1a2e; }
+.pattern-kw { display: inline-block; background: #dde3ff; color: #4361ee; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 3px; margin-right: 6px; }
+
+@media(max-width:700px) {
+  .pipeline { flex-direction: column; }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <div class="breadcrumb">Basic 포함 ›</div>
+  <div class="level-badge">🟡 Standard — 130점</div>
+  <h1>마케팅 성과 인사이트 리포트 + 주간 자동화 파이프라인</h1>
+  <div class="header-meta">
+    <span>📅 2026-04-01 ~ 2026-05-26</span>
+    <span>📊 280행 분석 완료</span>
+    <span>🔁 파이프라인: 매주 재사용 가능</span>
+    <span>✍️ [이름] · 2026-07-01</span>
+  </div>
+</div>
+
+<!-- 파이프라인 -->
+<div class="section">
+  <div class="section-title">⚙️ 파이프라인 구성 — 새 CSV 넣으면 자동 재현</div>
+  <div class="pipeline">
+    <div class="pipe-step input"><div class="cmd">새 csv</div><div class="desc">data/ 폴더에 교체</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step"><div class="cmd">/analyze</div><div class="desc">정제·품질 점검</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step"><div class="cmd">/insight</div><div class="desc">ROI·이슈·변화율</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step"><div class="cmd">/generate</div><div class="desc">Python 계산→리포트</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step"><div class="cmd">/review</div><div class="desc">자가 점검</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step output"><div class="cmd">제출</div><div class="desc">노션 공개 링크</div></div>
+  </div>
+
+  <div class="usage-box">
+    <span class="comment"># 매주 사용법 (Claude Code 터미널)</span><br>
+    <span class="comment"># 1. 새 marketing_performance.csv를 data/ 폴더에 교체</span><br>
+    <span class="cmd">/analyze</span> <span class="comment">  # 결측·중복·이상치·오가닉 0 점검</span><br>
+    <span class="cmd">/insight</span> <span class="comment">  # 채널 ROI 순위 + 이슈 3가지 + 전주대비 기준</span><br>
+    <span class="cmd">/generate</span> <span class="comment"> # Python으로 합계·ROI·변화율 계산 → insight_report.md</span><br>
+    <span class="cmd">/review</span> <span class="comment">   # 채점 기준 자가 점검 후 제출</span>
+  </div>
+
+  <div class="design-note">
+    <strong>주간 리포트 구성 근거 (본인 설계)</strong>
+    경영진은 "이번 주 한 줄 결론 + 어디에 돈을 더/덜 쓸지"를 원하고, 마케팅팀은 "당장 손볼 이상 항목 + 반복 패턴"을 원한다.
+    관심사가 다르므로 리포트를 <strong>경영진용 핵심 KPI·예산 시그널</strong>과 <strong>마케팅팀용 이상 항목·반복 패턴</strong> 두 블록으로 분리했다.
+    계산은 모두 Python으로 고정해 매주 동일 품질을 보장하고, Claude는 그 수치의 해석만 갱신한다.
+  </div>
+</div>
+
+<!-- 주간 리포트 샘플 -->
+<div class="section">
+  <div class="section-title">📬 주간 성과 리포트 샘플 — W8 (2026년 5월 4주차)</div>
+  <div class="weekly">
+    <div class="weekly-header">
+      <div>
+        <h2>📊 주간 마케팅 성과 리포트</h2>
+        <div class="period">W8 · 2026-05-20 ~ 2026-05-26 &nbsp;|&nbsp; 수신: 경영진 · 마케팅팀</div>
+      </div>
+    </div>
+    <div class="weekly-body">
+
+      <div class="kpi-row">
+        <div class="kpi kpi-blue"><div class="kpi-n" style="color:#4361ee">647만</div><div class="kpi-l">이번 주 지출</div><div class="kpi-ch down">↑ +7.2% (전주)</div></div>
+        <div class="kpi kpi-green"><div class="kpi-n" style="color:#2d6a4f">5,865만</div><div class="kpi-l">이번 주 매출</div><div class="kpi-ch up">↑ +3.8% (전주)</div></div>
+        <div class="kpi kpi-purple"><div class="kpi-n" style="color:#7048e8">3,081</div><div class="kpi-l">전환수</div><div class="kpi-ch up">↑ +7.8% (전주)</div></div>
+        <div class="kpi kpi-gray"><div class="kpi-n">4.57%</div><div class="kpi-l">전체 CTR</div><div class="kpi-ch">→ -0.8% (유지)</div></div>
+      </div>
+
+      <div class="subsection">
+        <h3>🧭 경영진용 — 채널 효율 & 예산 시그널 <span class="tag tag-exec">경영진</span></h3>
+        <table>
+          <thead><tr><th>채널</th><th>누적 ROI</th><th>시그널</th><th>예산 제안</th></tr></thead>
+          <tbody>
+            <tr><td>이메일</td><td class="num">1,042%</td><td>최고 효율, 모수 한정</td><td>CRM 리스트 확대 투자</td></tr>
+            <tr><td>네이버광고</td><td class="num">659%</td><td>안정적 고효율</td><td>유지 + 키워드 확장</td></tr>
+            <tr><td>메타광고</td><td class="num">259%</td><td>W5 과집행 후 회복</td><td>일 한도 설정, 점진 축소</td></tr>
+            <tr><td>오가닉</td><td class="num">측정 불가</td><td>무비용·전환 5,331건</td><td>SEO·콘텐츠 강화</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subsection">
+        <h3>🚨 마케팅팀용 — 이번 주기 이상 항목 <span class="tag tag-mkt">마케팅팀</span></h3>
+        <table>
+          <thead><tr><th>항목</th><th>현상</th><th>긴급도</th><th>권장 대응</th></tr></thead>
+          <tbody>
+            <tr><td>메타 W5 광고비</td><td>444만 (평소 ~3.5배)</td><td><span class="badge urg-high">🔴 높음</span></td><td>집행 한도·소재 점검</td></tr>
+            <tr><td>카카오 W4 광고비</td><td>52만 (전주 -41%)</td><td><span class="badge urg-mid">🟡 중간</span></td><td>집행 누락 여부 확인</td></tr>
+            <tr><td>이메일 04-26 매출</td><td>3,225만 (객단가 ~9배)</td><td><span class="badge urg-high">🔴 높음</span></td><td>입력 오류·중복 검증</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subsection">
+        <h3>🔁 반복 패턴 & 전략 시그널</h3>
+        <div class="pattern-list">
+          <div class="pattern-item">
+            <span class="pattern-kw">오가닉</span>
+            <strong>무비용 채널이 매출 2위(1억 424만)·전환 2위(5,331건):</strong> 광고 의존도를 낮출 레버. 콘텐츠·SEO 투자 시 전체 ROI 구조 개선 가능.
+          </div>
+          <div class="pattern-item">
+            <span class="pattern-kw">효율 격차</span>
+            <strong>이메일·네이버(고효율) vs 메타(저효율) ROI 4배 격차:</strong> 메타 예산 일부를 이메일 CRM 확대로 이동하면 동일 예산 대비 매출 상승 여지.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
