@@ -77,17 +77,20 @@ pip install pandas
 ```
 
 ### 새 CSV로 리포트 재생성
+
+**Claude Code 채팅에서** `/report-refresh data/새CSV.csv` 한 줄이면 정제·계산·`.md` 작성·HTML 렌더까지 자동 실행됩니다. (csv 경로 생략 시 `data/marketing_performance.csv` 기준. 자연어로 `data/새CSV.csv로 리포트 갱신해줘`라고 해도 동일하게 동작)
+
+내부적으로는 아래 순서로 동작합니다 — 터미널에서 직접 재현할 수도 있습니다:
+
 ```bash
 # 1) 정제·계산·예산 재배분 → output/*.json
 python src/regenerate.py data/marketing_performance.csv
-
-# 2) Claude Code가 JSON을 근거로 output/insight_report.md 갱신
 
 # 3) 갱신된 .md → output/insight_report.html 렌더
 python src/render_html.py
 ```
 
-> **Claude Code 채팅에서는** `data/새CSV.csv로 리포트 갱신해줘` 한마디면 Claude가 위 3단계(JSON 계산 → `.md` 작성 → HTML 렌더)를 순서대로 대신 실행합니다.
+> **2단계(JSON → `insight_report.md` 작성)는 Claude가 담당합니다** — 수치·표는 JSON 값 그대로 옮기고, 이슈 선정과 해석 문장만 새로 씁니다. 파이프라인에서 유일하게 사람/Claude의 해석이 들어가는 단계입니다.
 
 ## 📑 리포트 구성
 
