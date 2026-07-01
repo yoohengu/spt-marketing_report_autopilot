@@ -185,6 +185,52 @@ def week_over_week_changes(weekly_df, week_order):
     return changes
 
 
+def overall_week_over_week(df, week_order, missing_date_flags):
+    """마지막 두 주차의 '전체(모든 채널 합산)' 전주 대비 변화율.
+    리포트 '전체 합산 전주 대비' 줄(지출·매출·전환·CTR 등)의 출처 — 손계산이 아니라 여기서 계산한다.
+    비교 대상 두 주차에 결측일이 있는 채널×주차가 있으면 caveat로 표시(예: 네이버광고 W7 6/7일).
+    주차 라벨을 하드코딩하지 않고 week_order의 마지막 두 개를 자동으로 사용한다."""
+    if len(week_order) < 2:
+        return None
+    prev_wk, cur_wk = week_order[-2], week_order[-1]
+
+    def agg(wk):
+        w = df[df['week'] == wk]
+        spend, revenue, conversions = w['spend'].sum(), w['revenue'].sum(), w['conversions'].sum()
+        impressions, clicks = w['impressions'].sum(), w['clicks'].sum()
+        return {
+            'spend': spend, 'revenue': revenue, 'conversions': conversions,
+            'ctr_pct': clicks / impressions * 100 if impressions else None,
+            'cvr_pct': conversions / clicks * 100 if clicks else None,
+            'roi_pct': revenue / spend * 100 if spend else None,
+        }
+
+    cur, prev = agg(cur_wk), agg(prev_wk)
+
+    def pct(c, p):
+        if c is None or p is None or pd.isna(c) or pd.isna(p) or p == 0:
+            return None
+        return round((c - p) / p * 100, 1)
+
+    affected = [f for f in missing_date_flags if f['week'] in (prev_wk, cur_wk)]
+    return {
+        'prev_week': prev_wk,
+        'week': cur_wk,
+        'spend_change_pct': pct(cur['spend'], prev['spend']),
+        'revenue_change_pct': pct(cur['revenue'], prev['revenue']),
+        'conversions_change_pct': pct(cur['conversions'], prev['conversions']),
+        'ctr_change_pct': pct(cur['ctr_pct'], prev['ctr_pct']),
+        'cvr_change_pct': pct(cur['cvr_pct'], prev['cvr_pct']),
+        'roi_change_pct': pct(cur['roi_pct'], prev['roi_pct']),
+        'caveat': bool(affected),
+        'caveat_detail': [
+            {'channel': f['channel'], 'week': f['week'],
+             'actual_days': f['actual_days'], 'expected_days': f['expected_days']}
+            for f in affected
+        ],
+    }
+
+
 def channel_totals_ranked(df):
     """채널 전체 기간 합계 + ROI/ROAS/CTR/CVR (ROI = 매출/광고비 * 100). 오가닉(광고비 0)은 ROI/ROAS 별도 표기."""
     totals = df.groupby('channel').agg(
@@ -205,11 +251,20 @@ def channel_totals_ranked(df):
 
 
 def overall_totals(df):
+    """전체 합계 + 전체 ROI/CTR/CVR. CTR/CVR도 손계산이 아니라 여기서 Python으로 계산한다
+    (리포트 채널 랭킹표 '합계' 행의 CTR/CVR 출처). 노출·클릭이 0이면 CTR/CVR은 측정 불가."""
+    impressions = df['impressions'].sum()
+    clicks = df['clicks'].sum()
+    conversions = df['conversions'].sum()
     return {
         'total_spend': int(df['spend'].sum()),
         'total_revenue': int(df['revenue'].sum()),
-        'total_conversions': int(df['conversions'].sum()),
+        'total_conversions': int(conversions),
+        'total_impressions': int(impressions),
+        'total_clicks': int(clicks),
         'overall_roi_pct': round(df['revenue'].sum() / df['spend'].sum() * 100, 1),
+        'overall_ctr_pct': round(clicks / impressions * 100, 2) if impressions else None,
+        'overall_cvr_pct': round(conversions / clicks * 100, 2) if clicks else None,
     }
 
 
@@ -223,6 +278,7 @@ def main():
 
     week_order = sorted(df['week'].unique(), key=lambda w: int(w[1:]))
     wow = week_over_week_changes(weekly, week_order)
+    overall_wow = overall_week_over_week(df, week_order, flags)
 
     ranked_totals = channel_totals_ranked(df)
     overall = overall_totals(df)
@@ -245,6 +301,7 @@ def main():
         'calendar_wide_gaps': calendar_gaps,
         'weekly_channel_metrics': weekly.to_dict('records'),
         'week_over_week_changes': wow,
+        'overall_week_over_week': overall_wow,
         'channel_totals_ranked': ranked_totals.to_dict('records'),
         'overall_totals': overall,
     }

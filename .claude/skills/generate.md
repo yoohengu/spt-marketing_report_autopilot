@@ -27,10 +27,21 @@ python src/regenerate.py [csv_path]   # csv_path 생략 시 data/marketing_perfo
 
 작성 규칙:
 - 모든 수치는 JSON에 있는 값을 그대로 사용 ("약 XXX", "대략 YYY" 같은 추정 표현 금지)
+- 전체 합계 CTR/CVR는 `overall_totals`의 `overall_ctr_pct`/`overall_cvr_pct`를, "전체 합산 전주 대비"(마지막 두 주차)는 `overall_week_over_week`(지출·매출·전환·CTR·CVR·ROI 변화율 + 결측일 `caveat`/`caveat_detail`)를 **그대로 인용** — 채널별 값을 손으로 합산·재계산하지 말 것
 - 중복·이상치·결측·오가닉ROI 처리 방법을 수치 옆에 명시 (JSON의 `duplicates_removed`/`revenue_outliers_removed`/`missing_value_flags`/`missing_date_flags` 참고)
 - 이슈 3가지는 JSON의 `issue_candidates_wow`/`issue_candidates_zero_spend`를 1차 후보로 삼되, 단일 지표 ±50% 기준으로는 못 잡는 복합 신호가 있을 수 있으니 원본 CSV도 함께 훑어보고 비즈니스 영향이 큰 3가지를 최종 선정 — 각각 근거 수치 + 비즈니스 영향 + 권장 조치 포함
 - 예산 재배분 기획안은 `budget_proposal.json`의 `proposal_1`/`proposal_2`를 그대로 사용 (`_skipped_reason`이 있으면 해당 기획안은 생성하지 않고 사유를 명시)
 - **시각화 차트(이미지)는 만들지 않음** — 텍스트 리포트만
+
+---
+
+## Step 2.5: HTML 렌더 (insight_report.md 갱신 직후)
+
+`output/insight_report.md`를 작성/갱신했으면 아래를 실행해 HTML을 동기화합니다. `.html`을 손으로 만들지 마세요 — `.md`가 정본이고 이 스크립트가 `.md`를 읽어 같은 내용의 스타일 HTML을 생성하므로 두 파일이 어긋나지 않습니다.
+
+```
+python src/render_html.py    # output/insight_report.md -> output/insight_report.html
+```
 
 ---
 
@@ -47,6 +58,7 @@ python src/regenerate.py [csv_path]   # csv_path 생략 시 data/marketing_perfo
 ## 완료 기준
 - [ ] `src/regenerate.py` 실행 완료 (오류 없음)
 - [ ] output/insight_report.md 파일 존재
+- [ ] `src/render_html.py` 실행해 output/insight_report.html 동기화 완료
 - [ ] Executive Summary + 핵심 수치(총지출·총매출·전체ROI·총전환) 포함
 - [ ] 채널별 ROI 순위표 포함 (오가닉/spend=0 채널 측정 불가 표기)
 - [ ] 이슈 3가지 (근거 수치 포함)

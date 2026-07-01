@@ -858,6 +858,25 @@
       "caveat": false
     }
   ],
+  "overall_week_over_week": {
+    "prev_week": "W7",
+    "week": "W8",
+    "spend_change_pct": 7.2,
+    "revenue_change_pct": 3.8,
+    "conversions_change_pct": 7.8,
+    "ctr_change_pct": -0.8,
+    "cvr_change_pct": 1.1,
+    "roi_change_pct": -3.1,
+    "caveat": true,
+    "caveat_detail": [
+      {
+        "channel": "네이버광고",
+        "week": "W7",
+        "actual_days": 6,
+        "expected_days": 7
+      }
+    ]
+  },
   "channel_totals_ranked": [
     {
       "channel": "이메일",
@@ -924,7 +943,11 @@
     "total_spend": 50683819,
     "total_revenue": 439553059,
     "total_conversions": 22694,
-    "overall_roi_pct": 867.2
+    "total_impressions": 14640088,
+    "total_clicks": 670292,
+    "overall_roi_pct": 867.2,
+    "overall_ctr_pct": 4.58,
+    "overall_cvr_pct": 3.39
   },
   "issue_candidates_wow": [
     {

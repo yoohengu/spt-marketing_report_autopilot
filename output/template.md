@@ -151,15 +151,17 @@
 
 ## 7. 리포트 재생성 가이드 🟡`Standard`
 
-새 CSV가 들어오면 Claude Code에게 "`data/[새 CSV 경로]`로 리포트 갱신해줘"라고 한 번만 요청하면 된다. 터미널을 직접 열어 명령어를 칠 필요는 없다 — Claude가 아래 스크립트를 대신 실행하고, 그 결과를 읽어 리포트를 갱신한다.
+새 CSV가 들어오면 Claude Code에게 "`data/[새 CSV 경로]`로 리포트 갱신해줘"라고 한 번만 요청하면 된다. 터미널을 직접 열 필요 없이 — Claude가 아래 순서로 정제·계산·작성·렌더까지 대신 처리한다.
 
 ```
-python src/regenerate.py [csv_path]     # csv_path 생략 시 data/marketing_performance.csv
+python src/regenerate.py [csv_path]     # 1) 정제·집계·예산 재배분 계산 → JSON (생략 시 data/marketing_performance.csv)
+#                                         2) Claude가 JSON을 근거로 insight_report.md 갱신
+python src/render_html.py               # 3) 갱신된 .md → insight_report.html 렌더 (내용 동기화)
 ```
 
-이 스크립트가 자동으로 처리하는 것:
-1. 데이터 정제(중복·이상치·결측 제거) + 채널별 ROI 순위 + 전주 대비 변화율 계산 + 이슈 후보 탐지
-2. 채널 성과를 다시 스캔해 예산 재배분 대상·목적지 채널을 자동으로 찾고, 재배분 금액·우선순위 점수 계산
+자동으로 처리되는 것:
+1. 데이터 정제(중복·이상치·결측 제거) + 채널별 ROI 순위 + 전주 대비 변화율(채널별·전체 합산) 계산 + 이슈 후보 탐지 + 예산 재배분 대상·금액·우선순위 계산 → JSON
+2. JSON을 근거로 리포트(.md) 갱신 후, `.md`를 그대로 스타일 HTML로 렌더 — `.md`가 정본이라 두 파일이 어긋나지 않음
 
 **참고**: (자동화가 못 미치는 부분이 있다면 여기에 직접 서술)
 

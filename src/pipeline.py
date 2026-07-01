@@ -29,6 +29,7 @@ from calculate import (  # noqa: E402
     detect_missing_values,
     load_and_clean,
     overall_totals,
+    overall_week_over_week,
     week_over_week_changes,
     weekly_channel_metrics,
 )
@@ -93,6 +94,7 @@ def run(csv_path, json_out=JSON_OUT):
     weekly = weekly_channel_metrics(df)
     week_order = sorted(df['week'].unique(), key=lambda w: int(w[1:]))
     wow = week_over_week_changes(weekly, week_order)
+    overall_wow = overall_week_over_week(df, week_order, flags)
 
     ranked_totals = channel_totals_ranked(df).to_dict('records')
     overall = overall_totals(df)
@@ -109,6 +111,7 @@ def run(csv_path, json_out=JSON_OUT):
         'calendar_wide_gaps': calendar_gaps,
         'weekly_channel_metrics': weekly.to_dict('records'),
         'week_over_week_changes': wow,
+        'overall_week_over_week': overall_wow,
         'channel_totals_ranked': ranked_totals,
         'overall_totals': overall,
         'issue_candidates_wow': wow_candidates,

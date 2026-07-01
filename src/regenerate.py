@@ -29,8 +29,9 @@ def main():
     print(f"\n[2/2] 예산 재배분 계산 실행: {METRICS_JSON}")
     run_budget_proposal(METRICS_JSON, PROPOSAL_JSON)
 
-    print("\n[regenerate] 완료. 다음 단계: Claude에게 "
-          "'이 결과로 output/insight_report.md 갱신해줘'라고 요청하세요.")
+    print("\n[regenerate] 계산 완료. 남은 단계 (순서대로):")
+    print("  1) 이 JSON(calculated_metrics.json, budget_proposal.json)을 근거로 output/insight_report.md 갱신")
+    print("  2) python src/render_html.py 실행 → output/insight_report.html 동기화 (.md가 정본)")
 
 
 if __name__ == '__main__':

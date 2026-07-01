@@ -17,7 +17,12 @@
 3. /generate → **Python으로 합계·ROI·변화율 계산** → output/template.md 형식으로 `insight_report.md` 생성
 4. /review   → 제출 전 자가 점검 (수치 정확성·이슈 근거·변화율 포함)
 
-> **파이프라인 구축 완료 (Standard/Challenge)**: 위 4단계는 최초 1회 수행 방식이며, 이후 `src/pipeline.py`(정제·집계·이슈탐지) + `src/budget_proposal.py`(예산 재배분)가 동일 로직을 스크립트로 자동화했습니다. **새 CSV로 리포트를 다시 만들 때는 이 4단계를 수동으로 반복하지 말고 `src/regenerate.py [csv_path]`를 실행하세요** — 채널명·날짜를 하드코딩하지 않아 새 데이터에도 동일 품질로 재현됩니다. 사용법은 `output/insight_report.md`의 "리포트 재생성 가이드" 섹션 참고.
+> **파이프라인 구축 완료 (Standard/Challenge)**: 위 4단계는 최초 1회 수행 방식이며, 이후 `src/pipeline.py`(정제·집계·이슈탐지) + `src/budget_proposal.py`(예산 재배분)가 동일 로직을 스크립트로 자동화했습니다. **새 CSV로 리포트를 다시 만들 때는 이 4단계를 수동으로 반복하지 말고, 아래 순서를 그대로 따르세요** — 채널명·날짜를 하드코딩하지 않아 새 데이터에도 동일 품질로 재현됩니다:
+> 1. `python src/regenerate.py [csv_path]` — 정제·집계·예산 재배분 계산 → `output/calculated_metrics.json`, `output/budget_proposal.json`
+> 2. 위 두 JSON을 근거로 `output/insight_report.md`를 갱신 (숫자·표는 JSON 값 그대로, 이슈·해석 문장만 작성)
+> 3. `python src/render_html.py` — 갱신된 `.md`를 `output/insight_report.html`로 렌더(내용 동기화, `.md`가 정본)
+>
+> 사용법 상세는 `output/insight_report.md`의 "리포트 재생성 가이드" 섹션 참고.
 
 ## 의사결정 로깅 규칙
 날짜·결측 처리 방법, 이상치 처리 기준, 이슈 3가지 선정 근거, ROI/변화율 계산 공식 등 중요 결정은
