@@ -22,6 +22,8 @@
 > 2. 위 두 JSON을 근거로 `output/insight_report.md`를 갱신 (숫자·표는 JSON 값 그대로, 이슈·해석 문장만 작성)
 > 3. `python src/render_html.py` — 갱신된 `.md`를 `output/insight_report.html`로 렌더(내용 동기화, `.md`가 정본)
 >
+> **Skill로 한 번에 실행**: 위 1~3단계는 `.claude/skills/report-refresh.md`로 패키징되어 있습니다. Claude Code 채팅에서 `/report-refresh [csv_path]` 한 줄이면 정제→계산→리포트 갱신→HTML 렌더까지 자동 수행됩니다 (csv_path 생략 시 `data/marketing_performance.csv`).
+>
 > 사용법 상세는 `output/insight_report.md`의 "리포트 재생성 가이드" 섹션 참고.
 
 ## 의사결정 로깅 규칙

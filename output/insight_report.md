@@ -163,7 +163,16 @@
 
 ## 7. 리포트 재생성 가이드 🟡`Standard`
 
-새 CSV가 들어오면 Claude Code에게 "`data/[새 CSV 경로]`로 리포트 갱신해줘"라고 한 번만 요청하면 된다. 터미널을 직접 열 필요 없이 — Claude가 아래 순서로 정제·계산·작성·렌더까지 대신 처리한다.
+**가장 빠른 방법 — Skill 호출 한 줄**: Claude Code 채팅창에 아래처럼 입력하면 정제·계산·작성·렌더까지 전부 대신 처리한다.
+
+```
+/report-refresh                       # data/marketing_performance.csv 기준으로 갱신
+/report-refresh data/[새 CSV 경로]     # 새 CSV 지정 시
+```
+
+(정의: `.claude/skills/report-refresh.md`. 자연어로 "report-refresh 스킬로 리포트 갱신해줘"라고 해도 동일하게 동작한다.)
+
+터미널을 직접 열 필요 없이 — Claude가 아래 순서로 정제·계산·작성·렌더까지 대신 처리한다.
 
 ```
 python src/regenerate.py [csv_path]     # 1) 정제·집계·예산 재배분 계산 → JSON (생략 시 data/marketing_performance.csv)
